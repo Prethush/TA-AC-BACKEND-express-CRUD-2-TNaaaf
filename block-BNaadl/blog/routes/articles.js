@@ -28,6 +28,7 @@ router.post('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   let id = req.params.id;
   Article.findById(id, (err, article) => {
+    console.log(article.tags);
     if(err) return next(err);
     res.render('articleDetails', {article});
   })
