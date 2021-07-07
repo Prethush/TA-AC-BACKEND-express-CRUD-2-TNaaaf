@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <nav class="bg-primary py-4 px-8 flex justify-between items-center">
+        <a href="/" class="text-white text-3xl font-bold">Home</a>
+        <a href="/articles" class="bg-blue-900 p-2 rounded text-white font-bold hover:bg-blue-600 text-xl">Articles List</a>
+    </nav>
+    <section class="px-12 bg-red-200 my-20 py-8 w-11/12 mx-auto">
+        <h1 class="text-4xl text-blue-600 font-bold mb-3"><%= article.title %> </h1>
+        <h4 class="text-red-500 my-3 font-bold">Author: <%= article.author %></h4>
+        
+        
+            <% article.tags.forEach(t => { %>
+                <h2 class="bg-blue-400 py-2 px-3 rounded-lg mb-3 inline-block"><%= t %></h2>
+            <% }) %>
+        
+            <h2 class="text-xl font-bold my-3 text-green-700"><%= article.description %></h2>
+       
+        <h5 class="mb-3"><%= article.likes ? article.likes : 0 %></h5>
+        <div class="mb-6">
+            <a href="/articles/<%= article.id %>/like" class="btn1 bg-green-600 p-2 text-white rounded-lg">Like</a>
+        </div>
+        <a href="/articles/<%= article.id %>/edit" class="bg-blue-600 p-2 text-white rounded-lg">Edit Articles</a>
+        <a href="/articles/<%= article.id %>/delete" class="ml-2 bg-red-500 p-2 text-white rounded-lg">Delete Articles</a>
+        
+    </section>
+   
+</body>
+</html>

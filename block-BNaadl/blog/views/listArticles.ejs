@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+   
+    <% include partials/header %>
+    <h1 class="text-center mt-6 text-4xl font-bold text-gray-600">Articles list</h1>
+    <section class="px-12 mt-8">
+        <% if(articles.length) { %>
+            <% articles.forEach(article => { %>
+                <a href="/articles/<%= article.id %>" class="text-3xl font-bold text-indigo-600 my-4 block bg-gray-200 px-2 py-3 rounded-lg"><h1><%= article.title %></h1></a>
+            <% }) %>
+        <% }  else { %>
+            <h1>No Articles Present</h1>
+        <% } %>
+    
+    
+    
+</body>
+</html>

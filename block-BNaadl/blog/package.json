@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon bin/www",
+    "build:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.13.2",
+    "morgan": "~1.9.1",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.4"
+  }
+}
