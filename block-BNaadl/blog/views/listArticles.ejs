@@ -8,9 +8,14 @@
 </head>
 <body>
     <a href="/articles/new">Add Articles</a>
-    <% articles.forEach(article => { %>
-        <h1>Title: <%= article.title %></h1>
-        <a href="/articles/<%= article.id %>">Show More</a>
-    <% }) %>
+    <% if(articles.length) { %>
+        <% articles.forEach(article => { %>
+            <h1>Title: <%= article.title %></h1>
+            <a href="/articles/<%= article.id %>">Show More</a>
+        <% }) %>
+    <% }  else { %>
+        <h1>No Articles Present</h1>
+    <% } %>
+
 </body>
 </html>
