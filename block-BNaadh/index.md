@@ -5,6 +5,6 @@ Q. write express generator command with varying options to generate express app 
 - using ejs as template engine //express --view=ejs sample(appname)
 - no views for express application //express --no-view sample
 - express app with gitignore //express --git sample
-- express app with sass support for styling. //express --css=sass sample
-- ejs as template engine and sass for styling //express --css=sass --view=ejs sample
+- express app with sass support for styling. //express --css sass sample
+- ejs as template engine and sass for styling //express --css sass --view=ejs sample
 - pug as template engine and gitignore together //express --git --view=pug sample
