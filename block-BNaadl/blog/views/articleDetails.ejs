@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/articles">Back</a>
+    <h1>Title: <%= article.title %> </h1>
+    <h2>Description: <%= article.description %></h2>
+    <h3>Tags: <%= article.tags %></h3>
+    <h4>Author: <%= article.author %></h4>
+    <h5>Likes: <span class="value"><%= article.likes %></span></h5>
+    <a href="/articles/<%= article.id %>/edit">Edit Articles</a>
+    <a href="/articles/<%= article.id %>/delete">Delete Articles</a>
+    <a href="#" class="btn1">Increment Like</a>
+    <a href="#" class="btn2">Decrement Like</a>
+
+    <script>
+        let btn1 = document.querySelector('.btn1');
+        let btn2 = document.querySelector('.btn2');
+        let value = document.querySelector('.value')
+        btn1.addEventListener("click", () => {
+            ++value.innerText;
+        });
+        btn2.addEventListener("click", () => {
+            --value.innerText;
+        });
+    </script>
+</body>
+</html>
