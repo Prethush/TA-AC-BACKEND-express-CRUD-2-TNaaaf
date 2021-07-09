@@ -7,7 +7,7 @@ let articleSchema = new Schema({
     tags: [String],
     author: String,
     likes: {type: Number, default: 0},
-    comments: [{type: Schema.Types.ObjectId, ref: "Comment", required: true}]
+    comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
 }, {timestamps: true});
 
 module.exports = mongoose.model("Article", articleSchema);

@@ -23,7 +23,7 @@ router.get('/:id/delete', (req, res, next) => {
     let id = req.params.id;
     Comment.findByIdAndDelete(id, (err, comment) => {
         if(err) return next(err);
-        Article.findByIdAndUpdate(comment.articleId, {$pull: {comment: id}}, (err, article) => {
+        Article.findByIdAndUpdate(comment.articleId, {$pull: {comments: id}}, (err, article) => {
             if(err) return next(err);
             res.redirect('/articles/' + comment.articleId);
         })
