@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/books/<%= book.id %>" method="POST">
+        <input type="text" name="title" placeholder="Enter the Title" value="<%= book.title %>">
+        <textarea name="summary" rows="6" placeholder="Summary"><%= book.summary %></textarea>
+        <input type="number" name="pages" placeholder="No of Pages" value="<%= book.pages %>">
+        <input type="text" name="publication" placeholder="Publication" value="<%= book.publication %>">
+        <input type="text" name="categories" placeholder="Category" value="<%= book.categories %>">
+        <input type="submit" value="Add Book">
+    </form>
+</body>
+</html>

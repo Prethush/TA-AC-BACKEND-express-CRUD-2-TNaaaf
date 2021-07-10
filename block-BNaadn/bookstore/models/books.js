@@ -6,8 +6,8 @@ let bookSchema = new Schema({
     summary: {type: String, required: true},
     pages: Number,
     publication: String,
-    authorId: {type: Schema.Types.ObjectId, ref: 'Book', required: true},
-    categories: [String]
+    authorId: {type: Schema.Types.ObjectId, ref: 'Author', required: true},
+    categories: [String],
 }, {timestamps: true});
 
 
