@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/books/fiction/search">Fiction</a></li>
+            <li><a href="/books/adventure/search">Adventure</a></li>
+            <li><a href="/books/technology/search">Technology</a></li>
+            <li><a href="/books/motivation/search">Motivation</a></li>
+        </ul>
+    </nav>
+    <a href="/authors/new">Add Author</a>
+    <a href="/authors">Authors List</a>
+
+    <form action="/books" method="GET">
+        <input type="search" name="search" placeholder="Enter book/author">
+        <input type="submit" value="search">
+    </form>
+    <% books.forEach(book => { %>
+        <a href="/authors/<%= book.authorId %>"><h1><%= book.title %></h1></a>
+    <% }) %>
+   
+</body>
+</html>
