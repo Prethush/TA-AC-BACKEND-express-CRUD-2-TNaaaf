@@ -2,35 +2,34 @@ let express = require('express');
 let router = express.Router();
 let Book = require('../models/books');
 let Author = require('../models/author');
+let multer = require('multer');
+let path = require('path');
 
+let storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        console.log(path.join(__dirname, 'public/uploads'));
+        cb(null, path.join(__dirname, '../public/uploads'));
+
+     },
+    filename: function (req, file, cb) {
+        cb(null , file.originalname);
+    }
+});
+
+let upload = multer({storage: storage});
 
 //display booklist
 router.get('/', (req, res, next) => {
-    var value = "";
-    if(req.query.search !== null && req.query.search !== '') {
-        value = new RegExp(req.query.search, 'i');
+    let searchOptions = {};
+    if(req.query.title != '' || req.query.title != null) {
+        searchOptions.title = new RegExp(req.query.title, 'i');
     }
-    Book.find({title: value}, (err, books) => {
+    Book.find(searchOptions, (err, books) => {
         if(err) return next(err);
-        if(books.length === 0) {
-            Author.findOne({name: value}).populate('books').exec((err, author) => {
-                if(err) return next(err);
-                let books = author.books;
-                res.render('bookList', {books});
-            }) 
-        }   else {
-                res.render('bookList', {books})
-            }
-
-        })
+        res.render('bookList', {books})
+      })
     
-    if(req.query.search === '' || req.query.search === null) {
-        Book.find({}, (err, books) => {
-            if(err) return next(err);
-            res.render('bookList', {books});
-        })
-    }
-    })
+    });
 
 
 
@@ -60,10 +59,10 @@ router.get('/:id/edit', (req, res, next) => {
 });
 
 //update book
-router.post('/:id', (req, res, next) => {
+router.post('/:id', upload.single('coverImage'),(req, res, next) => {
     let id = req.params.id;
     req.body.categories = req.body.categories.trim().split(" ");
-    Book.findByIdAndUpdate(id, req.body, (err, book) => {
+    Book.findByIdAndUpdate(id, {...req.body, coverImage: req.file.originalname}, (err, book) => {
         if(err) return next(err);
         res.redirect('/authors/' + book.authorId);
     })

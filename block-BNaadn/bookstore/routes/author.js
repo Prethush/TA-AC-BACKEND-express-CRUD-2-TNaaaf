@@ -2,6 +2,23 @@ let express = require('express');
 let router = express.Router();
 let Author = require('../models/author');
 let Book = require('../models/books');
+let multer = require('multer');
+let path = require('path');
+
+//multer storage
+let storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        console.log(path.join(__dirname, 'public/uploads'));
+        cb(null, path.join(__dirname, '../public/uploads'));
+
+     },
+    filename: function (req, file, cb) {
+        cb(null , file.originalname);
+    }
+});
+
+let upload = multer({storage: storage});
+
 
 router.get('/new', (req, res, next) => {
     res.render('createAuthorForm');
@@ -29,11 +46,12 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
-router.post('/:id/books', (req, res, next) => {
+router.post('/:id/books', upload.single('coverImage'), (req, res, next) => {
     let id = req.params.id;
     req.body.categories = req.body.categories.trim().split(" ");
     req.body.authorId = id;
-    Book.create(req.body, (err, book) => {
+    console.log(req.body);
+    Book.create({...req.body, coverImage: req.file.originalname}, (err, book) => {
         if(err) return next(err);
         Author.findByIdAndUpdate(id, {$push: {books: book.id}}, (err, author) => {
             if(err) return next(err);
