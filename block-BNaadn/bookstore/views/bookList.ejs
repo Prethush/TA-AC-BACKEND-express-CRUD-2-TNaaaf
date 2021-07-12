@@ -9,6 +9,7 @@
 <body>
     <nav>
         <ul>
+            <li><a href="/books">All</a></li>
             <li><a href="/books/fiction/search">Fiction</a></li>
             <li><a href="/books/adventure/search">Adventure</a></li>
             <li><a href="/books/technology/search">Technology</a></li>
@@ -19,7 +20,7 @@
     <a href="/authors">Authors List</a>
 
     <form action="/books" method="GET">
-        <input type="search" name="search" placeholder="Enter book/author">
+        <input type="search" name="title" placeholder="Enter book/author">
         <input type="submit" value="search">
     </form>
     <% books.forEach(book => { %>

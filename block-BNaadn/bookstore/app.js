@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var multer = require('multer');
 
 
 mongoose.connect(" mongodb://127.0.0.1:27017/bookstore",{ useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
