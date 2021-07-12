@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/books">Back</a>
+    <% authors.forEach(author => { %>
+        <a href="/authors/<%= author.id %>"><h2><%= author.name %></h2></a>
+        <!-- <h3><%= author.email %></h3>
+        <h4><%= author.country %></h4> -->
+    <% }) %>
+</body>
+</html>

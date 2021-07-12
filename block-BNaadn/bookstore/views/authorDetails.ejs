@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/books">Book List</a>
+    <h1><%= author.name %></h1>
+    <h2><%= author.email %></h2>
+    <h3><%= author.country %></h3>
+    <a href="/authors/<%= author.id %>/edit">Edit Author</a>
+    <a href="/authors/<%= author.id %>/delete">Delete Author</a>
+
+    <form action="/authors/<%= author.id %>/books" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Enter the Title">
+        <textarea name="summary" rows="6" placeholder="Summary"></textarea>
+        <input type="number" name="pages" placeholder="No of Pages">
+        <input type="text" name="publication" placeholder="Publication">
+        <input type="text" name="categories" placeholder="Category">
+        <input type="file" name="coverImage">
+        <input type="submit" value="Add Book">
+    </form>
+
+    <h2>Book Details</h2>
+    <% author.books.forEach(book => { %>
+        <h1><%= book.title %></h1>
+        <p><%= book.summary %></p>
+        <h3><%= book.pages %></h3>
+        <h4><%= book.publication %></h4>
+        <% book.categories.forEach(c => { %>
+            <h5><%= c %></h5>
+        <% }) %>
+        <img src="/uploads/<%= book.coverImage %>" alt="">
+        <a href="/books/<%= book.id %>/edit">Edit Book</a>
+        <a href="/books/<%= book.id %>/delete">Delete Book</a>
+    <% }) %>
+</body>
+</html>
